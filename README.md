@@ -1,2 +1,2 @@
-# appointment-bot
-Appointment
+# Telegram bot for making appointments
+
