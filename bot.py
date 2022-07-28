@@ -19,12 +19,18 @@ async def send_welcome(message: types.Message):
     """
     This handler will be called when user sends `/start` command
     """
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    if message.from_user.language_code == 'ru':
+        buttons = ['Запись', 'Мои записи']
+    else:
+        buttons = ['Appointment', 'My appointments']
+    keyboard.add(*buttons)
     eng_greeting = "Hi " + message.from_user.first_name  # TODO: Write welcoming messages
     ru_greeting = "Привет " + message.from_user.first_name
     if message.from_user.language_code == 'ru':
-        await message.reply(ru_greeting)
+        await message.reply(ru_greeting, reply_markup=keyboard)
     else:
-        await message.reply(eng_greeting)
+        await message.reply(eng_greeting, reply_markup=keyboard)
 
 
 @dp.message_handler(commands=['help'])
