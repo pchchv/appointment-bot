@@ -22,15 +22,12 @@ async def send_welcome(message: types.Message):
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     if message.from_user.language_code == 'ru':
         buttons = ['Запись', 'Мои записи']
+        greeting = "Привет " + message.from_user.first_name  # TODO: Write welcoming message
     else:
         buttons = ['Appointment', 'My appointments']
+        greeting = "Hi " + message.from_user.first_name      # TODO: Write welcoming message
     keyboard.add(*buttons)
-    eng_greeting = "Hi " + message.from_user.first_name  # TODO: Write welcoming messages
-    ru_greeting = "Привет " + message.from_user.first_name
-    if message.from_user.language_code == 'ru':
-        await message.reply(ru_greeting, reply_markup=keyboard)
-    else:
-        await message.reply(eng_greeting, reply_markup=keyboard)
+    await message.reply(greeting, reply_markup=keyboard)
 
 
 @dp.message_handler(commands=['help'])
@@ -38,12 +35,11 @@ async def send_welcome(message: types.Message):
     """
     This handler will be called when user sends `/help` command
     """
-    ru_help = ""  # TODO: Write helping messages
-    eng_help = ""
     if message.from_user.language_code == 'ru':
-        await message.reply(ru_help)
+        help_message = ""  # TODO: Write helping message
     else:
-        await message.reply(eng_help)
+        help_message = ""  # TODO: Write helping message
+    await message.reply(help_message)
 
 
 if __name__ == '__main__':
