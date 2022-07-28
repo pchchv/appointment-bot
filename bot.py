@@ -1,9 +1,10 @@
+import os
 import logging
+from dotenv import load_dotenv
 from aiogram import Bot, Dispatcher, types, executor
 
-with open("token.txt", 'r') as t:
-    BOT_TOKEN = t.read()
-t.close()
+load_dotenv()
+BOT_TOKEN = os.getenv('BOT_TOKEN')
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
