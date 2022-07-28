@@ -21,3 +21,7 @@ async def send_welcome(message: types.Message):
     eng_text = "Hi " + message.from_user.first_name  # TODO: Write welcoming messages
     ru_text = "Привет " + message.from_user.first_name
     await message.reply(eng_text)
+
+
+if __name__ == '__main__':
+    executor.start_polling(dp, skip_updates=True)
