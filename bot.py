@@ -55,5 +55,18 @@ async def send_welcome(message: types.Message):
     await message.reply(appointment_message)
 
 
+@dp.message_handler(text=['My appointments', 'Мои записи'])
+async def send_welcome(message: types.Message):
+    """
+    This handler will be called when the user sends the "Appointment" command or clicks the "Appointment" button.
+    """
+    if message.from_user.language_code == 'ru':
+        appointment_message = ''  # TODO: Write message
+    else:
+        appointment_message = ''  # TODO: Write message
+    # TODO: Implement a function to view user appointments
+    await message.reply(appointment_message)
+
+
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
