@@ -21,10 +21,10 @@ async def send_welcome(message: types.Message):
     """
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     if message.from_user.language_code == 'ru':
-        buttons = ['Запись', 'Мои записи', 'Регистрация']
+        buttons = ['Запись', 'Мои записи', 'Регистрация', 'Вход']
         greeting = 'Привет ' + message.from_user.first_name  # TODO: Write welcoming message
     else:
-        buttons = ['Appointment', 'My appointments', 'Sign up']
+        buttons = ['Appointment', 'My appointments', 'Sign up', 'Sign in']
         greeting = 'Hi ' + message.from_user.first_name      # TODO: Write welcoming message
     keyboard.add(*buttons)
     await message.reply(greeting, reply_markup=keyboard)
@@ -52,6 +52,19 @@ async def send_welcome(message: types.Message):
     else:
         appointment_message = ''  # TODO: Write message
     # TODO: Implement a sign up function
+    await message.reply(appointment_message)
+
+
+@dp.message_handler(text=['Sign in', 'Вход'])
+async def send_welcome(message: types.Message):
+    """
+    This handler will be called when the user sends the "Sign in" message or clicks the "Sign in" button.
+    """
+    if message.from_user.language_code == 'ru':
+        appointment_message = ''  # TODO: Write message
+    else:
+        appointment_message = ''  # TODO: Write message
+    # TODO: Implement a sign in function
     await message.reply(appointment_message)
 
 
