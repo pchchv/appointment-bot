@@ -31,3 +31,9 @@ def find_document(collection, elements, multiple=False):
         return [r for r in results]
     else:
         return collection.find_one(elements)
+
+
+def update_document(collection, query_elements, new_values):
+    """ Function to update a single document in a collection.
+    """
+    collection.update_one(query_elements, {'$set': new_values})
