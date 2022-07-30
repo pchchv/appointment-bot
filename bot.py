@@ -2,6 +2,7 @@ import os
 import logging
 from dotenv import load_dotenv
 from aiogram import Bot, Dispatcher, types, executor
+from mongo import mongo_db
 
 load_dotenv()
 BOT_TOKEN = os.getenv('BOT_TOKEN')
@@ -96,4 +97,5 @@ async def send_welcome(message: types.Message):
 
 
 if __name__ == '__main__':
+    mongo_db()
     executor.start_polling(dp, skip_updates=True)
