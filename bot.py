@@ -22,10 +22,10 @@ async def send_welcome(message: types.Message):
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     if message.from_user.language_code == 'ru':
         buttons = ['Запись', 'Мои записи']
-        greeting = "Привет " + message.from_user.first_name  # TODO: Write welcoming message
+        greeting = 'Привет ' + message.from_user.first_name  # TODO: Write welcoming message
     else:
         buttons = ['Appointment', 'My appointments']
-        greeting = "Hi " + message.from_user.first_name      # TODO: Write welcoming message
+        greeting = 'Hi ' + message.from_user.first_name      # TODO: Write welcoming message
     keyboard.add(*buttons)
     await message.reply(greeting, reply_markup=keyboard)
 
@@ -36,10 +36,23 @@ async def send_welcome(message: types.Message):
     This handler will be called when user sends `/help` command
     """
     if message.from_user.language_code == 'ru':
-        help_message = ""  # TODO: Write helping message
+        help_message = ''  # TODO: Write helping message
     else:
-        help_message = ""  # TODO: Write helping message
+        help_message = ''  # TODO: Write helping message
     await message.reply(help_message)
+
+
+@dp.message_handler(text=['Appointment', 'Запись'])
+async def send_welcome(message: types.Message):
+    """
+    This handler will be called when the user sends the "Appointment" command or clicks the "Appointment" button.
+    """
+    if message.from_user.language_code == 'ru':
+        appointment_message = ''  # TODO: Write message
+    else:
+        appointment_message = ''  # TODO: Write message
+    # TODO: Implement the appointment function
+    await message.reply(appointment_message)
 
 
 if __name__ == '__main__':
