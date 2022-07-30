@@ -37,3 +37,9 @@ def update_document(collection, query_elements, new_values):
     """ Function to update a single document in a collection.
     """
     collection.update_one(query_elements, {'$set': new_values})
+
+
+def delete_document(collection, query):
+    """ Function to delete a single document from a collection.
+    """
+    collection.delete_one(query)
