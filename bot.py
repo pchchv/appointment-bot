@@ -21,10 +21,10 @@ async def send_welcome(message: types.Message):
     """
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     if message.from_user.language_code == 'ru':
-        buttons = ['Запись', 'Мои записи']
+        buttons = ['Запись', 'Мои записи', 'Регистрация']
         greeting = 'Привет ' + message.from_user.first_name  # TODO: Write welcoming message
     else:
-        buttons = ['Appointment', 'My appointments']
+        buttons = ['Appointment', 'My appointments', 'Sign up']
         greeting = 'Hi ' + message.from_user.first_name      # TODO: Write welcoming message
     keyboard.add(*buttons)
     await message.reply(greeting, reply_markup=keyboard)
@@ -42,10 +42,23 @@ async def send_welcome(message: types.Message):
     await message.reply(help_message)
 
 
+@dp.message_handler(text=['Sign up', 'Регистрация'])
+async def send_welcome(message: types.Message):
+    """
+    This handler will be called when the user sends the "Sign up" message or clicks the "Sign up" button.
+    """
+    if message.from_user.language_code == 'ru':
+        appointment_message = ''  # TODO: Write message
+    else:
+        appointment_message = ''  # TODO: Write message
+    # TODO: Implement a sign up function
+    await message.reply(appointment_message)
+
+
 @dp.message_handler(text=['Appointment', 'Запись'])
 async def send_welcome(message: types.Message):
     """
-    This handler will be called when the user sends the "Appointment" command or clicks the "Appointment" button.
+    This handler will be called when the user sends the "Appointment" message or clicks the "Appointment" button.
     """
     if message.from_user.language_code == 'ru':
         appointment_message = ''  # TODO: Write message
@@ -58,7 +71,8 @@ async def send_welcome(message: types.Message):
 @dp.message_handler(text=['My appointments', 'Мои записи'])
 async def send_welcome(message: types.Message):
     """
-    This handler will be called when the user sends the "Appointment" command or clicks the "Appointment" button.
+    This handler will be called when the user sends the "My appointments" message
+    or clicks the "My appointments" button.
     """
     if message.from_user.language_code == 'ru':
         appointment_message = ''  # TODO: Write message
