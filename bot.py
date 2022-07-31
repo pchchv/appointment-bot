@@ -23,12 +23,12 @@ async def send_welcome(message: types.Message):
     """
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     if message.from_user.language_code == 'ru':
-        buttons = ['Запись', 'Мои записи', 'Регистрация', 'Вход']
+        buttons = ['Регистрация', 'Вход', 'Запись', 'Мои записи', 'Отменить запись']
         greeting = 'Привет ' + message.from_user.first_name + '!\n' +\
                    'Если Вы пользователь, то этот бот поможет Вам записаться к специалисту.\n' +\
                    'Если Вы специалист, то бот поможет Вам организовать ведение ваших клиентов.'
     else:
-        buttons = ['Appointment', 'My appointments', 'Sign up', 'Sign in']
+        buttons = ['Sign up', 'Sign in', 'Appointment', 'My appointments', 'Cancel the appointment']
         greeting = 'Hi ' + message.from_user.first_name + '!\n' +\
                    'If you are a user, this bot will help you make an appointment with a specialist.\n' +\
                    'If you are a specialist, this bot will help you organize your management of your customers.'
@@ -113,6 +113,20 @@ async def send_message(message: types.Message):
         appointment_message = ''  # TODO: Write message
     # TODO: Implement a function to view user appointments
     await message.reply(appointment_message)
+
+
+@dp.message_handler(text=['Cancel the appointment', 'Отменить запись'])
+async def send_message(message: types.Message):
+    """
+    This handler will be called when the user sends the "My appointments" message
+    or clicks the "My appointments" button.
+    """
+    if message.from_user.language_code == 'ru':
+        cancel_message = ''  # TODO: Write message
+    else:
+        cancel_message = ''  # TODO: Write message
+    # TODO: Implement a function to view user appointments
+    await message.reply(cancel_message)
 
 
 if __name__ == '__main__':
