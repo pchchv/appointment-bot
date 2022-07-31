@@ -3,7 +3,7 @@ import logging
 from dotenv import load_dotenv
 from aiogram import Bot, Dispatcher, types, executor
 from mongo import mongo_db, insert_document, find_document, update_document, delete_document
-from processprs import signup
+from processprs import signup, signin
 
 load_dotenv()
 BOT_TOKEN = os.getenv('BOT_TOKEN')
@@ -75,11 +75,16 @@ async def send_welcome(message: types.Message):
     """
     This handler will be called when the user sends the "Sign in" message or clicks the "Sign in" button.
     """
-    if message.from_user.language_code == 'ru':
-        appointment_message = ''  # TODO: Write message
+    if signin():
+        if message.from_user.language_code == 'ru':
+            appointment_message = 'Вы успешно авторизованы!'
+        else:
+            appointment_message = 'You are successfully signed in!'
     else:
-        appointment_message = ''  # TODO: Write message
-    # TODO: Implement a sign in function
+        if message.from_user.language_code == 'ru':
+            appointment_message = 'Произошла ошибка!\nПожалуйста, повторите попытку.'
+        else:
+            appointment_message = 'Error!\nPlease try again.'
     await message.reply(appointment_message)
 
 
