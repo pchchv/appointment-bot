@@ -37,7 +37,7 @@ async def send_welcome(message: types.Message):
 
 
 @dp.message_handler(commands=['help'])
-async def send_welcome(message: types.Message):
+async def send_message(message: types.Message):
     """
     This handler will be called when user sends `/help` command
     """
@@ -53,7 +53,7 @@ async def send_welcome(message: types.Message):
 
 
 @dp.message_handler(text=['Sign up', 'Регистрация'])
-async def send_welcome(message: types.Message):
+async def send_message(message: types.Message):
     """
     This handler will be called when the user sends the "Sign up" message or clicks the "Sign up" button.
     """
@@ -71,7 +71,7 @@ async def send_welcome(message: types.Message):
 
 
 @dp.message_handler(text=['Sign in', 'Вход'])
-async def send_welcome(message: types.Message):
+async def send_message(message: types.Message):
     """
     This handler will be called when the user sends the "Sign in" message or clicks the "Sign in" button.
     """
@@ -89,7 +89,7 @@ async def send_welcome(message: types.Message):
 
 
 @dp.message_handler(text=['Appointment', 'Запись'])
-async def send_welcome(message: types.Message):
+async def send_message(message: types.Message):
     """
     This handler will be called when the user sends the "Appointment" message or clicks the "Appointment" button.
     """
@@ -102,7 +102,7 @@ async def send_welcome(message: types.Message):
 
 
 @dp.message_handler(text=['My appointments', 'Мои записи'])
-async def send_welcome(message: types.Message):
+async def send_message(message: types.Message):
     """
     This handler will be called when the user sends the "My appointments" message
     or clicks the "My appointments" button.
