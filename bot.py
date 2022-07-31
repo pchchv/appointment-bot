@@ -41,9 +41,13 @@ async def send_welcome(message: types.Message):
     This handler will be called when user sends `/help` command
     """
     if message.from_user.language_code == 'ru':
-        help_message = ''  # TODO: Write helping message
+        help_message = 'Если Вы пользователь, то этот бот поможет Вам записаться к специалисту.\n' +\
+                   'Если Вы специалист, то бот поможет Вам организовать ведение ваших клиентов.'
+        # TODO: Add commands descriptions
     else:
-        help_message = ''  # TODO: Write helping message
+        help_message = 'If you are a user, this bot will help you make an appointment with a specialist.\n' +\
+                   'If you are a specialist, this bot will help you organize your management of your customers.'
+        # TODO: Add commands descriptions
     await message.reply(help_message)
 
 
