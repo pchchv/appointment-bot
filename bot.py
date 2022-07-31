@@ -23,10 +23,14 @@ async def send_welcome(message: types.Message):
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
     if message.from_user.language_code == 'ru':
         buttons = ['Запись', 'Мои записи', 'Регистрация', 'Вход']
-        greeting = 'Привет ' + message.from_user.first_name  # TODO: Write welcoming message
+        greeting = 'Привет ' + message.from_user.first_name + '!\n' +\
+                   'Если Вы пользователь, то этот бот поможет Вам записаться к специалисту.\n' +\
+                   'Если Вы специалист, то бот поможет Вам организовать ведение ваших клиентов.'
     else:
         buttons = ['Appointment', 'My appointments', 'Sign up', 'Sign in']
-        greeting = 'Hi ' + message.from_user.first_name      # TODO: Write welcoming message
+        greeting = 'Hi ' + message.from_user.first_name + '!\n' +\
+                   'If you are a user, this bot will help you make an appointment with a specialist.\n' +\
+                   'If you are a specialist, this bot will help you organize your management of your customers.'
     keyboard.add(*buttons)
     await message.reply(greeting, reply_markup=keyboard)
 
