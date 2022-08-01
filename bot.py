@@ -3,7 +3,7 @@ import logging
 from dotenv import load_dotenv
 from aiogram import Bot, Dispatcher, types, executor
 from mongo import mongo_db, insert_document, find_document, update_document, delete_document
-from processprs import signup, signin
+from processors import signup, signin
 
 load_dotenv()
 BOT_TOKEN = os.getenv('BOT_TOKEN')
